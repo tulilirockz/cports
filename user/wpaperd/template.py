@@ -1,6 +1,6 @@
 pkgname = "wpaperd"
 pkgver = "1.0.1"
-pkgrel = 0
+pkgrel = 1
 build_style = "cargo"
 hostmakedepends = [
     "cargo-auditable",
@@ -27,5 +27,15 @@ def post_build(self):
 def install(self):
     self.install_bin(f"target/{self.profile().triplet}/release/wpaperd")
     self.install_bin(f"target/{self.profile().triplet}/release/wpaperctl")
+    self.install_completion(f"target/{self.profile().triplet}/release/completions/wpaperd.bash", "bash")
+    self.install_completion(f"target/{self.profile().triplet}/release/completions/wpaperctl.bash", "bash")
+    self.install_completion(f"target/{self.profile().triplet}/release/completions/wpaperd.zsh", "zsh")
+    self.install_completion(f"target/{self.profile().triplet}/release/completions/wpaperctl.zsh", "zsh")
+    self.install_completion(f"target/{self.profile().triplet}/release/completions/wpaperd.elv", "evilsh")
+    self.install_completion(f"target/{self.profile().triplet}/release/completions/wpaperctl.elv", "evilsh")
+    self.install_completion(f"target/{self.profile().triplet}/release/completions/wpaperd.fish", "fish")
+    self.install_completion(f"target/{self.profile().triplet}/release/completions/wpaperctl.fish", "fish")
+    self.install_completion(f"target/{self.profile().triplet}/release/completions/_wpaperd.ps1", "pwsh")
+    self.install_completion(f"target/{self.profile().triplet}/release/completions/_wpaperctl.ps1", "pwsh")
     self.install_license("LICENSE.md")
     self.install_man("wpaperd-output.5")
